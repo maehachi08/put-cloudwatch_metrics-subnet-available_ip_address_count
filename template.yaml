@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+    put-cloudwatch_metrics-subnet-available_ip_address_count
+
+    TEST CODE.
+
+Globals:
+    Function:
+        Timeout: 3
+
+
+Resources:
+
+    PutCloudWatchMeticsAvalilableIpAddressCountFunction:
+        Type: AWS::Serverless::Function
+        Properties:
+            CodeUri: src/
+            Handler: app.lambda_handler
+            Runtime: python3.6
+            Events:
+              CheckWebsiteScheduledEvent:
+                Type: Schedule
+                Properties:
+                  Schedule: rate(1 minute)
+
+Outputs:
+    PutCloudWatchMeticsAvalilableIpAddressCountFunction:
+      Description: "Lambda Function ARN"
+      Value: !GetAtt PutCloudWatchMeticsAvalilableIpAddressCountFunction.Arn
