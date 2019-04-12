@@ -2,7 +2,7 @@ import json
 import traceback
 from botocore.exceptions import ClientError
 
-from lib import enum, subnet, ecs, cloudwatch
+from lib import enum, subnet, cloudwatch
 
 
 def lambda_handler(event, context):
