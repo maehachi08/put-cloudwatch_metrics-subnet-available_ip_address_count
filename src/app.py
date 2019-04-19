@@ -2,13 +2,13 @@ import json
 import traceback
 from botocore.exceptions import ClientError
 
-from lib import enum, subnet, cloudwatch
+from lib import subnet, cloudwatch
 
 
 def lambda_handler(event, context):
     try:
         response = {}
-        for subnet_id in enum.subnet_ids:
+        for subnet_id in subnet.subnet_ids():
             availability_zone = subnet.get_availability_zone(subnet_id)
             available_ip_address_count = subnet.get_available_ip_address_count(subnet_id)
             put_metric_data_response = cloudwatch.put_metric_data_wrapper(subnet_id, availability_zone, available_ip_address_count)

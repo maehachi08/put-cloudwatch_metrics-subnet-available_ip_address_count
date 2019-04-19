@@ -1,6 +1,14 @@
+from enum import Enum
 import boto3
 
 client = boto3.client('ec2')
+
+
+def subnet_ids(Enum):
+    return (
+        "subnet-5e827f28",
+        "subnet-11ded148",
+    )
 
 
 def get_availability_zone(subnet_id: str):
